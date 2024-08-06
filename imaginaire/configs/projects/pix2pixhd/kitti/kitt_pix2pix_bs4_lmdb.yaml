@@ -1,0 +1,130 @@
+# How often do you want to save output images during training.
+image_save_iter: 2000
+snapshot_save_iter: 2000
+max_epoch: 400
+logging_iter: 100
+# trainer options
+trainer:
+    type: imaginaire.trainers.pix2pixHD
+    amp_config:
+        enabled: True
+    model_average_config:
+        enabled: True
+        beta: 0.999
+        start_iteration: 500
+        num_batch_norm_estimation_iterations: 0
+
+    gan_mode: hinge
+    gan_relativistic: False
+    perceptual_loss:
+        mode: 'vgg19'
+        layers: ['relu_1_1', 'relu_2_1', 'relu_3_1', 'relu_4_1', 'relu_5_1']
+        weights: [0.03125, 0.0625, 0.125, 0.25, 1.0]
+    loss_weight:
+        gan: 1.0
+        feature_matching: 10.0
+        perceptual: 10.0
+    init:
+        type: xavier
+        gain: 0.02
+
+# model options
+gen:
+    type: imaginaire.generators.pix2pixHD
+    global_generator:
+        num_filters: 64
+        num_downsamples: 4
+        num_res_blocks: 9
+    local_enhancer:
+        num_enhancers: 1
+        num_res_blocks: 3
+    weight_norm_type: spectral
+    activation_norm_type: instance
+    padding_mode: reflect
+
+dis:
+    type: imaginaire.discriminators.multires_patch
+    num_filters: 64
+    max_num_filters: 512
+    num_discriminators: 3
+    num_layers: 3
+    weight_norm_type: spectral
+    activation_norm_type: instance
+
+# optimization option
+gen_opt:
+    type: adam
+    lr: 0.0002
+    adam_beta1: 0.5
+    adam_beta2: 0.999
+    lr_policy:
+        iteration_mode: False
+        type: step
+        step_size: 100
+        gamma: 0.1
+dis_opt:
+    type: adam
+    lr: 0.0002
+    adam_beta1: 0.5
+    adam_beta2: 0.999
+    lr_policy:
+        iteration_mode: False
+        type: step
+        step_size: 100
+        gamma: 0.1
+
+# Data options.
+data:    
+    type: imaginaire.datasets.paired_images
+    # How many data loading workers per GPU?
+    num_workers: 8
+    input_types:
+        - images:
+            ext: png
+            num_channels: 1
+            normalize: True
+        - label:
+            ext: png
+            num_channels: 3
+            normalize: True
+            use_dont_care: False
+
+    use_dont_care: True
+    input_labels:
+        - label
+
+    # Which lmdb contains the ground truth image.
+    input_image:
+        - images
+
+    # Train dataset details.
+    train:
+        # Input LMDBs.
+        dataset_type: lmdb
+        roots:
+            - /home/woody/i9vl/i9vl106h/data/kitti/lmdb/train
+        # Batch size per GPU.
+        batch_size: 4
+        # Data augmentations to be performed in given order.
+        augmentations:
+            resize_smallest_side: 256
+            # Rotate in (-rotate, rotate) in degrees.
+            rotate: 0
+            # Scale image by factor \in [1, 1+random_scale_limit].
+            random_scale_limit: 0.2
+            # Horizontal flip?
+            horizontal_flip: True
+            # Crop size.
+            random_crop_h_w: 256, 1000
+    # Train dataset details.
+    val:
+        dataset_type: lmdb
+        # Input LMDBs.
+        roots:
+            - /home/woody/i9vl/i9vl106h/data/kitti/lmdb/val
+        # Batch size per GPU.
+        batch_size: 4
+        # Data augmentations to be performed in given order.
+        augmentations:
+            # Crop size.
+            resize_h_w: 256, 1000

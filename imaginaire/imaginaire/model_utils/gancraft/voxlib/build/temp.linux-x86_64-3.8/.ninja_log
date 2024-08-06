@@ -1,0 +1,5 @@
+# ninja log v5
+4	18227	1721126951321919681	/home/hpc/i9vl/i9vl106h/imaginaire/imaginaire/model_utils/gancraft/voxlib/build/temp.linux-x86_64-3.8/positional_encoding_kernel.o	83b5f275b927e0c
+3	19385	1721126952463173882	/home/hpc/i9vl/i9vl106h/imaginaire/imaginaire/model_utils/gancraft/voxlib/build/temp.linux-x86_64-3.8/ray_voxel_intersection.o	eccca1bdcd380e33
+2	19750	1721126952819632679	/home/hpc/i9vl/i9vl106h/imaginaire/imaginaire/model_utils/gancraft/voxlib/build/temp.linux-x86_64-3.8/voxlib.o	abc2aaddf6ed027a
+3	23343	1721126956432577911	/home/hpc/i9vl/i9vl106h/imaginaire/imaginaire/model_utils/gancraft/voxlib/build/temp.linux-x86_64-3.8/sp_trilinear_worldcoord_kernel.o	c085437ff085bd75

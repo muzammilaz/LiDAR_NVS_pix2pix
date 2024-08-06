@@ -1,0 +1,7 @@
+dataloader = kitti360
+path = /home/woody/i9vl/i9vl106h/data/kitti360
+sequence_id = 8120
+num_frames = 51
+fov_lidar = [2.0, 26.9]
+scale = 0.012104464765986422
+offset = [1296.6353307337845, 3445.409670432263, 111.83192627282426]
