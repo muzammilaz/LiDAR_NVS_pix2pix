@@ -1,0 +1,30 @@
+{
+    "preds_spade_res_300_masked_400": {
+        "mse": 1493.511,
+        "ssim": -0.002,
+        "l1": 28.356,
+        "psnr": 16.645,
+        "lpips": 0.259
+    },
+    "preds_spade_res_300_masked_no_data_400": {
+        "mse": 577.555,
+        "ssim": 0.211,
+        "l1": 16.957,
+        "psnr": 20.61,
+        "lpips": 0.148
+    },
+    "preds_spade_res_300_vanilla_400": {
+        "mse": 790.421,
+        "ssim": 0.105,
+        "l1": 20.508,
+        "psnr": 19.217,
+        "lpips": 0.25
+    },
+    "preds_spade_test_6_single_channel_700": {
+        "mse": 831.886,
+        "ssim": 0.017,
+        "l1": 21.335,
+        "psnr": 18.989,
+        "lpips": 0.295
+    }
+}

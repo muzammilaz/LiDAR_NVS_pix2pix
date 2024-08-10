@@ -1,0 +1,30 @@
+{
+    "preds_spade_test_7_lidar_data_masked_400": {
+        "mse": 418.876,
+        "ssim": 0.024,
+        "l1": 14.049,
+        "psnr": 21.036,
+        "lpips": 0.113
+    },
+    "preds_spade_test_8_lidar_data_masked_no_data_400": {
+        "mse": 171.15,
+        "ssim": 0.247,
+        "l1": 8.317,
+        "psnr": 24.366,
+        "lpips": 0.052
+    },
+    "preds_spade_test_8_lidar_data_vanilla_400": {
+        "mse": 288.83,
+        "ssim": 0.128,
+        "l1": 11.486,
+        "psnr": 22.178,
+        "lpips": 0.18
+    },
+    "preds_spade_test_6_single_channel_700": {
+        "mse": 173.985,
+        "ssim": 0.266,
+        "l1": 8.185,
+        "psnr": 24.297,
+        "lpips": 0.062
+    }
+}
