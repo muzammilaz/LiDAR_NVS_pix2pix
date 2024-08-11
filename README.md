@@ -1,5 +1,6 @@
 # Synthesizing LiDAR from RGB Image using generated dense LiDAR data from LiDAR Novel View Synthesis  
 
+![banner](banner.png)
 In this project, we trained Image translation model [SPADE](https://github.com/NVlabs/SPADE/) to generate LiDAR intensities in camera perspective conditioned on the RGB image from the camera. We utilize KITTI and KITTI-360 datasets for training the models.
 
 We utilize [LiDAR4D](https://github.com/ispc-lab/LiDAR4D), a recent approach to LiDAR Novel View Synthesis, to generate dense LiDAR point cloud and use the projected intensities to train Image-to-Image translation models.
